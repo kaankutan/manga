@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+{% load index_extras %}
+<!-- Product Section Begin -->
+<section class="product-page spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="product__page__content">
+                    <div class="product__page__title">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="section-title">
+                                    <h4>{{title}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for element in manga_elements %}
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <a href="/{{element.language}}/manga/{{element.slug}}/">
+                                    <div class="product__item__pic set-bg" data-setbg='{% static element.thumbnail %}'>
+                                        <div class="view"><i class="fa fa-eye"></i> {{element.views}}</div>
+                                    </div>
+                                </a>
+                                <div class="product__item__text">
+                                    <ul>
+                                        {% for category in element.categories %}
+                                            <li>{{category}}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    <h5><a href="/{{element.language}}/manga/{{element.slug}}/">{{element.title}}</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="product__pagination">
+                    {% if manga_elements.has_previous %}
+                        <a href="?{% url_replace request 'page' manga_elements.previous_page_number %}"><i class="fa fa-angle-left"></i></a>
+                    {% endif %}
+
+                    {% for i in manga_elements.paginator.page_range %}
+                        {% if i <= manga_elements.number|add:5 and i >= manga_elements.number|add:-5 %}
+                            <a href="?{% url_replace request 'page' i %}" {% if manga_elements.number == i %} class="current-page" {% endif %}>{{i}}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if manga_elements.has_next %}
+                        <a href="?{% url_replace request 'page' manga_elements.next_page_number %}"><i class="fa fa-angle-right"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-8">
+                <div class="product__sidebar">
+                    <div class="product__sidebar__comment">
+                        <div class="section-title">
+                            <h5>Most Viewed</h5>
+                        </div>
+                        {% for element in most_popular %}
+                        <div class="product__sidebar__comment__item">
+                            <div class="product__sidebar__comment__item__pic">
+                                <a href="/{{element.language}}/manga/{{element.slug}}/"><img src='{% static element.thumbnail %}' alt='{% static element.thumbnail %}'></a>
+                            </div>
+                            <div class="product__sidebar__comment__item__text">
+                                <h5><a href="/{{element.language}}/manga/{{element.slug}}/">{{element.title}}</a></h5>
+                                <span><i class="fa fa-eye"></i> {{element.views}} Viewes</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Section End -->
+{% endblock %}

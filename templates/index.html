@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!-- Slider Section Begin -->
+<section class="hero">
+    <div class="container">
+        <div class="hero__slider owl-carousel">
+            {% for slider in sliders %}
+            <div class="hero__items set-bg" data-setbg="{% static slider.thumbnail %}">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="hero__text">
+                            <h2>{{slider.title}}</h2>
+                            <p>{{slider.description}}</p>
+                            <a href="{{slider.url}}"><span>Read Now</span> <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- Slider Section End -->
+
+<!-- Product Section Begin -->
+<section class="product spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="trending__product">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <div class="section-title">
+                                <h4>Trending Now</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="btn__all">
+                                <a href="/{{language}}/manga/?sort_by=trending_now" class="primary-btn">View All <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for element in trending_now %}
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <a href="{{element.get_absolute_url}}">
+                                    <div class="product__item__pic set-bg" data-setbg='{% static element.thumbnail %}'>
+                                        <div class="view"><i class="fa fa-eye"></i> {{element.views}}</div>
+                                    </div>
+                                </a>
+                                <div class="product__item__text">
+                                    <ul>
+                                        {% for category in element.categories %}
+                                        <li>{{category}}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    <h5><a href="{{element.get_absolute_url}}">{{element.title}}</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="popular__product">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <div class="section-title">
+                                <h4>Popular Manga</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="btn__all">
+                                <a href="/{{language}}/manga/?sort_by=popular_manga" class="primary-btn">View All <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for element in popular_manga %}
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <a href="{{element.get_absolute_url}}">
+                                    <div class="product__item__pic set-bg" data-setbg='{% static element.thumbnail %}'>
+                                        <div class="view"><i class="fa fa-eye"></i> {{element.views}}</div>
+                                    </div>
+                                </a>
+                                <div class="product__item__text">
+                                    <ul>
+                                        {% for category in element.categories %}
+                                        <li>{{category}}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    <h5><a href="{{element.get_absolute_url}}">{{element.title}}</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="recent__product">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <div class="section-title">
+                                <h4>Recently Added</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="btn__all">
+                                <a href="/{{language}}/manga/?sort_by=recently_added" class="primary-btn">View All <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for element in recently_added %}
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <a href="{{element.get_absolute_url}}">
+                                    <div class="product__item__pic set-bg" data-setbg='{% static element.thumbnail %}'>
+                                        <div class="view"><i class="fa fa-eye"></i> {{element.views}}</div>
+                                    </div>
+                                </a>
+                                <div class="product__item__text">
+                                    <ul>
+                                        {% for category in element.categories %}
+                                        <li>{{category}}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    <h5><a href="{{element.get_absolute_url}}">{{element.title}}</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-8">
+                <div class="product__sidebar">
+                    <div class="product__sidebar__comment">
+                        <div class="section-title">
+                            <h5>Most Popular</h5>
+                        </div>
+                        {% for element in most_popular %}
+                        <div class="product__sidebar__comment__item">
+                            <div class="product__sidebar__comment__item__pic">
+                                <a href="{{element.get_absolute_url}}"><img src='{% static element.thumbnail %}' alt='{% static element.thumbnail %}'></a>
+                            </div>
+                            <div class="product__sidebar__comment__item__text">
+                                <h5><a href="{{element.get_absolute_url}}">{{element.title}}</a></h5>
+                                <span><i class="fa fa-eye"></i> {{element.views}} Viewes</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Section End -->
+
+{% endblock %}

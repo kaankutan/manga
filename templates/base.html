@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Anime Template">
+    <meta name="keywords" content="Anime, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Anime | Template</title>
+
+    <!-- Google ReCaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/plyr.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/nice-select.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <a href="/">
+                            <!-- <a href="/"><img src="/img/logo.png" alt=""></a>-->
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="header__nav">
+                    <nav class="header__menu mobile-menu">
+                        <ul>
+                            <li {% if current_page == "index" %} class="active" {% endif %}><a href="/">Homepage</a></li>
+                            <li {% if current_page == "trending_now" %} class="active" {% endif %}><a href="/{{language}}/manga/?sort_by=trending_now">Trending Now</a></li>
+                            <li {% if current_page == "popular_manga" %} class="active" {% endif %}><a href="/{{language}}/manga/?sort_by=popular_manga">Popular Manga</a></li>
+                            <li {% if current_page == "recently_added" %} class="active" {% endif %}><a href="/{{language}}/manga/?sort_by=recently_added">Latest Manga</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="header__right">
+                        <a href="#" class="search-switch"><span class="icon_search"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    {% block content %}{% endblock %}
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="page-up">
+            <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer__logo">
+                        <!-- <a href="/"><img src="/img/logo.png" alt=""></a>-->
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="footer__nav">
+                        <ul>
+                            <li {% if current_page == "index" %} class="active" {% endif %}><a href="/">Homepage</a></li>
+                            <li {% if current_page == "trending_now" %} class="active" {% endif %}><a href="/">Trending Now</a></li>
+                            <li {% if current_page == "popular_manga" %} class="active" {% endif %}><a href="/">Popular Manga</a></li>
+                            <li {% if current_page == "recently_added" %} class="active" {% endif %}><a href="/">Latest Manga</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="/" target="_blank">kaankutan</a>
+                  </div>
+              </div>
+          </div>
+      </footer>
+    <!-- Footer Section End -->
+
+
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch"><i class="icon_close"></i></div>
+            <form action="/{{language}}/manga/" class="search-model-form">
+                <input type="text" id="search" name="search" placeholder="Search here...">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+
+    <!-- Js Plugins -->
+    <script src="{% static '/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/js/player.js' %}"></script>
+    <script src="{% static '/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static '/js/mixitup.min.js' %}"></script>
+    <script src="{% static '/js/jquery.slicknav.js' %}"></script>
+    <script src="{% static '/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static '/js/main.js' %}"></script>
+</body>
+
+</html>
