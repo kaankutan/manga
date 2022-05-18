@@ -4,7 +4,7 @@ import django
 import pymongo
 from io import BytesIO
 import requests
-from mal import Manga
+from mal import Manga as malManga
 import boto3
 from django.utils.timezone import make_aware
 
@@ -13,8 +13,7 @@ os.environ.setdefault(
 )
 django.setup()
 
-from index.models import Manga as MangaModel
-from index.models import Slider, Chapter
+from index.models import Slider, Chapter, Manga
 
 session = boto3.session.Session(
     aws_access_key_id="AKIAW4O3BS6BRY53X7FR",
@@ -24,18 +23,18 @@ session = boto3.session.Session(
 s3_client = session.client('s3')
 
 MONGODB_URI = "mongodb+srv://admin:ebcCOFpzRv649Gr9@hoshiko-db.dd9mj.mongodb.net"
-
+# git clone https://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@github.com/kaankutan/facebook_creator.git
 client = pymongo.MongoClient(MONGODB_URI)
 
 if __name__ == "__main__":
-    for manga_obj in MangaModel.objects.all():
+    for manga_obj in Manga.objects.all():
         r = requests.get(
             "https://myanimelist.net/search/prefix.json",
             params={"type": "manga", "keyword": manga_obj.title, "v": "1"}
         )
         manga_search = r.json()['categories'][0]['items'][0]
         if 1.5 < manga_search['es_score']:
-            mal_manga = Manga(manga_search['id'])
+            mal_manga = malManga(manga_search['id'])
             # r = requests.get(mal_manga.image_url.replace(".jpg", "l.jpg"))
             # data = BytesIO(bytes(r.content))
             # s3_client.upload_fileobj(

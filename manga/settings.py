@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.sitemaps',
     'index'
     # 'django.contrib.sessions',
     # 'django.contrib.messages',
@@ -83,7 +84,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'UYTyYAq7XCD38MxR',
-        'HOST': 'localhost',
+        'HOST': 'ec2-18-156-73-180.eu-central-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
