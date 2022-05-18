@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-(e9fq5y7(^zs=m+urps)ug3b^xgt)u_@1abl3+3x@f=lfn5r!l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['mangared.net']
+ALLOWED_HOSTS = ['mangared.net', 'www.mangared.net']
 
 
 # Application definition
