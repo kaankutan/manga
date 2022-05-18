@@ -23,7 +23,7 @@ session = boto3.session.Session(
 s3_client = session.client('s3')
 
 MONGODB_URI = "mongodb+srv://admin:ebcCOFpzRv649Gr9@hoshiko-db.dd9mj.mongodb.net"
-# git clone https://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@github.com/kaankutan/facebook_creator.git
+# git clone https://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@github.com/kaankutan/manga.git
 # client = pymongo.MongoClient(MONGODB_URI)
 
 if __name__ == "__main__":
