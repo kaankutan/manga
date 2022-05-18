@@ -24,29 +24,30 @@ s3_client = session.client('s3')
 
 MONGODB_URI = "mongodb+srv://admin:ebcCOFpzRv649Gr9@hoshiko-db.dd9mj.mongodb.net"
 # git clone https://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@github.com/kaankutan/facebook_creator.git
-client = pymongo.MongoClient(MONGODB_URI)
+# client = pymongo.MongoClient(MONGODB_URI)
 
 if __name__ == "__main__":
-    for manga_obj in Manga.objects.all():
-        r = requests.get(
-            "https://myanimelist.net/search/prefix.json",
-            params={"type": "manga", "keyword": manga_obj.title, "v": "1"}
-        )
-        manga_search = r.json()['categories'][0]['items'][0]
-        if 1.5 < manga_search['es_score']:
-            mal_manga = malManga(manga_search['id'])
-            # r = requests.get(mal_manga.image_url.replace(".jpg", "l.jpg"))
-            # data = BytesIO(bytes(r.content))
-            # s3_client.upload_fileobj(
-            #     data, "hoshiko-cdn", f"en/manga_thumbnail/{manga_obj.slug}.jpg",
-            #     ExtraArgs={'ACL': 'public-read', 'ContentType': 'image/jpeg'}
-            # )
-            manga_obj.title = mal_manga.title
-            manga_obj.description = mal_manga.synopsis.split("  ")[0]
-            manga_obj.save()
-            print(manga_obj.title, "Saved", manga_search['es_score'], sep="|")
-        else:
-            print(manga_obj.title, "Not saved", manga_search['es_score'], sep="|")
+    print(Manga.objects.distinct('language').values('language'))
+    # for manga_obj in Manga.objects.all():
+    #     r = requests.get(
+    #         "https://myanimelist.net/search/prefix.json",
+    #         params={"type": "manga", "keyword": manga_obj.title, "v": "1"}
+    #     )
+    #     manga_search = r.json()['categories'][0]['items'][0]
+    #     if 1.5 < manga_search['es_score']:
+    #         mal_manga = malManga(manga_search['id'])
+    #         # r = requests.get(mal_manga.image_url.replace(".jpg", "l.jpg"))
+    #         # data = BytesIO(bytes(r.content))
+    #         # s3_client.upload_fileobj(
+    #         #     data, "hoshiko-cdn", f"en/manga_thumbnail/{manga_obj.slug}.jpg",
+    #         #     ExtraArgs={'ACL': 'public-read', 'ContentType': 'image/jpeg'}
+    #         # )
+    #         manga_obj.title = mal_manga.title
+    #         manga_obj.description = mal_manga.synopsis.split("  ")[0]
+    #         manga_obj.save()
+    #         print(manga_obj.title, "Saved", manga_search['es_score'], sep="|")
+    #     else:
+    #         print(manga_obj.title, "Not saved", manga_search['es_score'], sep="|")
     # Slider(
     #     title="Kimetsu No Yaiba",
     #     description="Tanjiro is the oldest son in his family who has lost his father. One day, Tanjiro ventures off to another town to sell charcoal. Instead of going home, he ends up staying the night at someone else's house due to rumors of a demon nearby in the mountains. When he gets home the following day, a terrible tragedy awaits him.",

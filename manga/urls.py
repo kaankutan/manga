@@ -15,19 +15,15 @@ Including another URLconf
 """
 from django.urls import path
 from django.contrib.sitemaps.views import sitemap
-from django.contrib.sitemaps import GenericSitemap
 from index.views import redirect_to_language, index, manga, manga_details, manga_chapter
-from index.models import Manga
+from index.sitemaps import MangaSitemap, StaticViewSitemap
 
-sitemap_conf = {
-    'queryset': Manga.objects.all(),
-    'date_field': 'updated_at',
-}
 
 urlpatterns = [
     path('', redirect_to_language),
-    path('sitemap.xml', sitemap, {'sitemaps': {'manga': GenericSitemap(sitemap_conf)}}),
-    path('<language>/', index),
+    path('sitemap.xml', sitemap, {'sitemaps': {'manga': MangaSitemap}}),
+    path('sitemap-static.xml', sitemap, {'sitemaps': {'static': StaticViewSitemap}}),
+    path('<language>/', index, name='index'),
     path('<language>/manga/', manga),
     path('<language>/manga/<manga_slug>/', manga_details),
     path('<language>/manga/<manga_slug>/<chapter_slug>/', manga_chapter),

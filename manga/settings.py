@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'PASSWORD': 'UYTyYAq7XCD38MxR',
-        'HOST': 'ec2-18-156-73-180.eu-central-1.compute.amazonaws.com',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -110,6 +110,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
+
+SECURE_SSL_REDIRECT = True
 
 LANGUAGE_CODE = 'en-us'
 
