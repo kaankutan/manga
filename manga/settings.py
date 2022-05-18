@@ -82,11 +82,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'pYKrGzdfY5cZ7nYHMkNQ',
-        'HOST': 'manga-db.cfb7uds8bicm.eu-central-1.rds.amazonaws.com',
+        'PASSWORD': 'UYTyYAq7XCD38MxR',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -121,7 +122,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'https://hoshiko-cdn.s3.eu-central-1.amazonaws.com/'
+STATIC_URL = 'https://manga-cdn.s3.eu-central-1.amazonaws.com/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

@@ -6,6 +6,7 @@ from django.db.models import Count, Q
 from django.utils import timezone
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.core.exceptions import FieldError
+from django.conf import settings
 
 # Create your views here.
 
@@ -65,7 +66,7 @@ def manga(request, language):
     manga_obj = manga_obj.filter(**queries)
     sort_by = request.GET.get('sort_by')
     sort_by_query = sort_queries.get(sort_by)
-    if sort_by is not None:
+    if sort_by_query is not None:
         manga_obj = manga_obj.order_by(sort_by_query)
     paginator = Paginator(manga_obj, 18)
     page = request.GET.get('page', 1)
