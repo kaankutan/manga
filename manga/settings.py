@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-(e9fq5y7(^zs=m+urps)ug3b^xgt)u_@1abl3+3x@f=lfn5r!l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['mangared.net', 'www.mangared.net']
+ALLOWED_HOSTS = ['mangared.net']
 
 
 # Application definition
@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'manga.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
+        'NAME': 'mangared',
+        'USER': 'mangared_root',
         'PASSWORD': 'UYTyYAq7XCD38MxR',
-        'HOST': '35.156.225.111',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -132,7 +132,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'https://manga-cdn.s3.eu-central-1.amazonaws.com/'
+STATIC_URL = 'https://mangared-cdn.s3.eu-central-1.amazonaws.com/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
