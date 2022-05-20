@@ -4,15 +4,34 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Anime Template">
-    <meta name="keywords" content="Anime, unica, creative, html">
+    <meta name="description" content="{{meta_description}}">
+    <meta name="keywords" content="{{meta_title}}, myreadingmanga, manga kakalot, toonily, manganelo, manhwa, manga owls, manga read, mangafreak, manga online, free manga">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="copyright" content="Copyright © 2022 MangaRed" />
+    <meta name="Author" content="MangaRed" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{meta_title}}" />
+    <meta property="og:url" content="{{request.build_absolute_uri}}" />
+    <meta property="og:description" content="{{meta_description}}" />
+    <meta property="og:site_name" content="{{request.get_host}}" />
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Anime | Template</title>
+    <title>{{meta_title}}</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S1W2NNZ0W5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-S1W2NNZ0W5');
+    </script>
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" type="text/css">
@@ -88,7 +107,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="/" target="_blank">kaankutan</a>
+                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved.
                   </div>
               </div>
           </div>
